@@ -4,7 +4,6 @@ type StockForm struct {
 	ID    string `json:"id"`
 	Style struct {
 		Color             string        `json:"color"`
-		Width             string        `json:"width"`
 		Price             struct {
 			ListPrice             float64     `json:"listPrice"`
 		} `json:"price"`

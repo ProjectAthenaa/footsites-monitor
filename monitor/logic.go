@@ -28,22 +28,21 @@ func (tk *Task) iteration() error {
 	}
 
 	for _, style := range stockform.Sizes{
-		tk.SendStyles(strconv.Itoa(style.ProductWebKey),style.Size, stockform.Style.Color, stockform.Style.Width, strconv.FormatFloat(stockform.Style.Price.ListPrice, 'f', -1, 64))
+		tk.SendStyles(strconv.Itoa(style.ProductWebKey),style.Size, stockform.Style.Color, strconv.FormatFloat(stockform.Style.Price.ListPrice, 'f', -1, 64))
 	}
 
 	for _, style := range stockform.StyleVariants{
-		tk.SendStyles(strconv.Itoa(style.ProductWebKey),style.Size, style.Color, stockform.Style.Width, strconv.FormatFloat(style.Price.ListPrice, 'f', -1, 64))
+		tk.SendStyles(strconv.Itoa(style.ProductWebKey),style.Size, style.Color, strconv.FormatFloat(style.Price.ListPrice, 'f', -1, 64))
 	}
 
 	return nil
 }
 
-func (tk *Task) SendStyles(variantid, size, color, width, price string){
+func (tk *Task) SendStyles(variantid, size, color, price string){
 	tk.Monitor.Channel <- map[string]interface{}{
 		"variantid": variantid,
 		"size" :size,
 		"color": color,
-		"width": width,
 		"price": price,
 	}
 }
