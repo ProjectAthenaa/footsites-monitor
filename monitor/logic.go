@@ -40,6 +40,7 @@ func (tk *Task) iteration() error {
 
 func (tk *Task) SendStyles(variantid, size, color, price string){
 	tk.Monitor.Channel <- map[string]interface{}{
+		"pid":tk.pid,
 		"variantid": variantid,
 		"size" :size,
 		"color": color,
